@@ -11,7 +11,10 @@ npm install serverless-validator
 # Usage
 
 ```javascript
-let resp = validator.evaluateParameters(
+let slsValidator = require('serverless-validator')
+let validator = require('validator')
+
+let resp = slsValidator.evaluateParameters(
     {
         'id': '100', 'username': 'johndoe'
     }, [{
@@ -35,7 +38,7 @@ let resp = validator.evaluateParameters(
 ])
 ```
 
-# Developemnt
+# Development
 
 ## Test
 
