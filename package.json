@@ -1,5 +1,5 @@
 {
-  "name": "sererless-validator",
+  "name": "serverless-validator",
   "version": "1.0.0",
   "description": "Serverless request validator",
   "main": "index.js",
