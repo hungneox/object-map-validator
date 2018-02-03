@@ -1,6 +1,6 @@
 # Serverless validator (helper)
 
-Under the hood it use [validator](https://www.npmjs.com/package/validator) module
+This helper supports validating `event.body` against a list of expected parameters, and return default values for required fields if they are missing from the request. Under the hood it use [validator](https://www.npmjs.com/package/validator) module.
 
 # Installation
 
@@ -36,6 +36,16 @@ let resp = slsValidator.evaluateParameters(
         default: '0441122334'
     }
 ])
+
+// resp = { 
+//     error: '',
+//     object: { 
+//         customerNo: '100',
+//         customerName: 'johndoe',
+//         phoneNo: '0441122334' 
+//     },
+//     string: 'customerNo=100&customerName=johndoe&phoneNo=0441122334' 
+// }
 ```
 
 # Development
