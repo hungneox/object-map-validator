@@ -29,11 +29,18 @@ describe('evaluateParameters[1]', (done) => {
         expect(resp.object).to.eql({})
       })
 
-    it('Return proper parameters: evaluateParameters', () => {
+    it('Return proper parameters [1]: evaluateParameters', () => {
         let resp = common.evaluateParameters({'id': '2018'}, expectedParametersFirst)
         assert.equal(resp.error, '')
         assert.equal(resp.string, 'lCusno=2018')
         expect(resp.object).to.eql({"lCusno":"2018"})
+    })
+
+    it('Return proper parameters [2]: evaluateParameters', () => {
+        let resp = common.evaluateParameters({'id': 2018}, expectedParametersFirst)
+        assert.equal(resp.error, '')
+        assert.equal(resp.string, 'lCusno=2018')
+        expect(resp.object).to.eql({"lCusno":2018})
     })
 })
 

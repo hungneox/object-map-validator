@@ -24,9 +24,9 @@ const evaluateParameters = function (parameters, expectedParameters) {
 const validate = function (parameter, paramValue) {
   let error = ''
   if (paramValue == null) {
-    [error, paramValue] = validateEmptyParams(parameter, paramValue)
+    [error, paramValue] = validateEmptyParams(parameter, String(paramValue))
   } else if (parameter.validator) {
-    error = validateParams(parameter, paramValue)
+    error = validateParams(parameter, String(paramValue))
   }
   return [error, paramValue]
 }
