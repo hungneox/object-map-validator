@@ -109,6 +109,18 @@ describe('evaluateParameters[3]', (done) => {
 })
 
 
+describe('evaluateParameters[4]', (done) => {
+    it('Return proper string: evaluateParameters', () => {
+        let resp = common.evaluateParameters(null, [{
+              name: 'id',
+              mappedName: 'lCusno',
+              required: true,
+              validator: validator.isInt
+          }])
+          assert.equal(resp.error, 'Parameters cannot be null!')
+      })
+});
+
 describe('validateEmptyParams', (done) => {
     it('Return proper error message: validateEmptyParams', () => {
         let [error, value] = common.validateEmptyParams({

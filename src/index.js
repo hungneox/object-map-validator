@@ -5,6 +5,14 @@ const evaluateParameters = function (parameters, expectedParameters) {
   let mapped = {}
   let mappedStrings = []
 
+  if (parameters == null) {
+    return {
+      error: "Parameters cannot be null!",
+      object: {},
+      string: ''
+    }
+  }
+
   for (let parameter of expectedParameters) {
     var [error, paramValue] = validate(parameter, parameters[parameter.name])
     if (error) break
