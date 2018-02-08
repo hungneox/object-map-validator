@@ -1,14 +1,14 @@
 {
-  "name": "serverless-validator",
-  "version": "1.0.1",
-  "description": "Serverless request validator",
+  "name": "object-map-validator",
+  "version": "1.0.0",
+  "description": "Object Map Validator",
   "main": "src/index.js",
   "directories": {
     "test": "test"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hungneox/serverless-validator.git"
+    "url": "git@github.com:hungneox/object-map-validator.git"
   },
   "keywords": [
     "serverless",

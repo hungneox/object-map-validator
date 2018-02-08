@@ -1,20 +1,20 @@
-# Serverless validator (helper)
+# Object Map Validator
 
-This helper supports validating `event.body` against a list of expected parameters, and return default values for required fields if they are missing from the request. Under the hood it use [validator](https://www.npmjs.com/package/validator) module.
+This object-map validator supports validating `event.body` against a list of expected parameters, and return default values for required fields if they are missing from the request. Under the hood it use [validator](https://www.npmjs.com/package/validator) module.
 
 # Installation
 
 ```
-npm install serverless-validator
+npm install object-map-validator
 ```
 
 # Usage
 
 ```javascript
-let slsValidator = require('serverless-validator')
+let objectMapValidator = require('object-map-validator')
 let validator = require('validator')
 
-let resp = slsValidator.evaluateParameters(
+let resp = objectMapValidator.evaluateParameters(
     {
         'id': '100', 'username': 'johndoe'
     }, [{
