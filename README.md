@@ -1,5 +1,7 @@
 # Object Map Validator
 
+[![Build Status](https://travis-ci.org/hungneox/object-map-validator.svg?branch=master)](https://travis-ci.org/hungneox/object-map-validator)
+
 This object-map validator supports validating `event.body` against a list of expected parameters, and return default values for required fields if they are missing from the request. Under the hood it use [validator](https://www.npmjs.com/package/validator) module.
 
 # Installation
