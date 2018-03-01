@@ -106,6 +106,31 @@ describe('evaluateParameters[3]', (done) => {
         assert.equal(resp.error, '')
         assert.equal(resp.string, 'lCusno=100&kayttajatunnus=johndoe&phoneNo=0441122334')
     })
+    it('Return only attributes in schema: evaluateParameters', () => {
+      let resp = common.evaluateParameters(
+        {
+          'id': '100', 'username': 'johndoe', 'phone': '0442222222', 'city': 'Helsinki'
+        }, [{
+            name: 'id',
+            mappedName: 'lCusno',
+            required: true,
+            validator: validator.isInt
+        },
+        {
+            name: 'username',
+            mappedName: 'kayttajatunnus',
+            required: true,
+            validator: validator.isAlpha,
+        },
+        {
+            name: 'phone',
+            mappedName: 'phoneNo',
+            required: true,
+            default: '0441122334'
+        }])
+        assert.equal(resp.error, '')
+        assert.equal(resp.string, 'lCusno=100&kayttajatunnus=johndoe&phoneNo=0442222222')
+    })
 })
 
 
