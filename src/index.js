@@ -56,13 +56,13 @@ const validateEmptyParams = function (parameter, paramValue) {
 // Validate param value using given validator
 const validateParams = function (parameter, paramValue) {
   let error = ''
-
-  if (!parameter.validator(paramValue, parameter.validatorOptions)) {
+  
+  if (!parameter.validator(paramValue, parameter.options)) {
     error = 'Parameter ' + parameter.name + ' failed validation. Expected validator: ' + parameter.validator.name
   }
 
-  if (parameter.validatorOptions) {
-    error += ' with options: ' + JSON.stringify(parameter.validatorOptions)
+  if (error && parameter.options) {
+    error += ' with options: ' + JSON.stringify(parameter.options)
   }
 
   return error

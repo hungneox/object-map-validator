@@ -64,7 +64,7 @@ const expectedParametersSecond = [{
 
 describe('evaluateParameters[2]', (done) => {
     it('Return proper error message: evaluateParameters', () => {
-      let resp = common.evaluateParameters({
+        let resp = common.evaluateParameters({
           'id': '100', 'username': 'john.doe'
         }, expectedParametersSecond)
         assert.equal(resp.error, 'Parameter username failed validation. Expected validator: isAlpha')
@@ -156,5 +156,50 @@ describe('validateEmptyParams', (done) => {
         }, null)
         assert.equal(error, '')
         assert.equal(value, '0441122334')
+    })
+})
+
+describe('validateParams', (done) => {
+    it('Validate params with range should fail [1]', () => {
+        let resp = common.evaluateParameters({
+            'age': 18
+          }, [{
+            name: 'age',
+            mappedName: 'leAge',
+            required: true,
+            validator: validator.isInt,
+            options: { min: 19 }
+        }])
+
+        assert.equal('Parameter age failed validation. Expected validator: isInt with options: {"min":19}', resp.error)
+        assert.equal('', resp.string)
+    })
+    it('Validate params with range should fail [2]', () => {
+        let resp = common.evaluateParameters({
+            'age': 101
+          }, [{
+            name: 'age',
+            mappedName: 'leAge',
+            required: true,
+            validator: validator.isInt,
+            options: { max: 100 }
+        }])
+
+        assert.equal('Parameter age failed validation. Expected validator: isInt with options: {"max":100}', resp.error)
+        assert.equal('', resp.string)
+    })
+    it('Validate params with range should pass [1]', () => {
+        let resp = common.evaluateParameters({
+            'age': 27
+          }, [{
+            name: 'age',
+            mappedName: 'leAge',
+            required: true,
+            validator: validator.isInt,
+            options: { max: 50 }
+        }])
+
+        assert.equal('', resp.error)
+        assert.equal('leAge=27', resp.string)
     })
 })
