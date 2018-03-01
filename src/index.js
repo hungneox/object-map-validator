@@ -57,7 +57,7 @@ const validateEmptyParams = function (parameter, paramValue) {
 const validateParams = function (parameter, paramValue) {
   let error = ''
 
-  if (!parameter.validator(paramValue, parameter.validatorOptions)) {
+  if (!parameter.validator(paramValue.toString(), parameter.validatorOptions)) {
     error = 'Parameter ' + parameter.name + ' failed validation. Expected validator: ' + parameter.validator.name
   }
 
