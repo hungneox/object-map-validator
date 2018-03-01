@@ -188,6 +188,19 @@ describe('validateParams', (done) => {
         assert.equal('Parameter age failed validation. Expected validator: isInt with options: {"max":100}', resp.error)
         assert.equal('', resp.string)
     })
+    it('Validate params with range should fail [3]', () => {
+        let resp = common.evaluateParameters({
+            'age': 17
+          }, [{
+            name: 'age',
+            mappedName: 'leAge',
+            required: true,
+            validator: validator.isInt,
+            options: { min: 18 }
+        }])
+        assert.equal('Parameter age failed validation. Expected validator: isInt with options: {"min":18}', resp.error)
+        assert.equal('', resp.string)
+    })
     it('Validate params with range should pass [1]', () => {
         let resp = common.evaluateParameters({
             'age': 27

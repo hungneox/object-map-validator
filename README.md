@@ -48,6 +48,32 @@ let resp = objectMapValidator.evaluateParameters(
 // }
 ```
 
+Validation with options
+
+```javascript
+let objectMapValidator = require('object-map-validator')
+let validator = require('validator')
+
+let resp = objectMapValidator.evaluateParameters(
+    {
+        'age': 17
+    }, [{
+        name: 'age',
+        mappedName: 'iAge',
+        required: true,
+        validator: validator.isInt
+        options: {min: 18}
+    }
+])
+
+// resp = { 
+//   error: 'Parameter age failed validation. Expected validator: isInt with options: {"min":18}',
+//   object: {},
+//   string: '' 
+// }
+
+```
+
 # Development
 
 ## Test
