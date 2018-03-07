@@ -1,7 +1,7 @@
 'use strict'
 
 // Check that user-entered parameters match our expectations
-const evaluateParameters = function (parameters, expectedParameters) {
+const evaluateParameters = function (parameters, expectedParameters, ignoreEmpty=false) {
   let mapped = {}
   let mappedStrings = []
 
@@ -16,6 +16,7 @@ const evaluateParameters = function (parameters, expectedParameters) {
   for (let parameter of expectedParameters) {
     var [error, paramValue] = validate(parameter, parameters[parameter.name])
     if (error) break
+    if (!paramValue && ignoreEmpty) continue
     mapped[parameter.mappedName] = paramValue
     mappedStrings.push(`${parameter.mappedName}=${paramValue}`)
   }
