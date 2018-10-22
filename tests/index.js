@@ -68,7 +68,6 @@ describe('evaluateParameters[2]', (done) => {
           'id': '100', 'username': 'john.doe'
         }, expectedParametersSecond)
         assert.equal(resp.error, 'Parameter username failed validation. Expected validator: isAlpha')
-        assert.equal(resp.string, 'lCusno=100')
     })
 
     it('Return proper parameters: evaluateParameters', () => {
@@ -142,20 +141,20 @@ describe('evaluateParameters[4]', (done) => {
               required: true,
               validator: validator.isInt
           }])
-          assert.equal(resp.error, 'Parameters cannot be null!')
+          assert.equal(resp.error, 'Parameters should be presented!')
       })
 });
 
 describe('validateEmptyParams', (done) => {
     it('Return proper error message: validateEmptyParams', () => {
-        let [error, value] = common.validateEmptyParams({
+        let { error, paramValue } = common.validateEmptyParams({
             name: 'phone',
             mappedName: 'phoneNo',
             required: true,
             default: '0441122334'
         }, null)
         assert.equal(error, '')
-        assert.equal(value, '0441122334')
+        assert.equal(paramValue, '0441122334')
     })
 })
 
